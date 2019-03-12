@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { addTodo, toggleTodo } from '../actions';
 
+import './TodoList.css'
+
 class TodoList extends React.Component {
     state = {
         newTodo: ''
@@ -27,7 +29,10 @@ class TodoList extends React.Component {
         <>
         <div>
         {this.props.todos.map(todo => (
-            <h3 key={todo.id} onClick={()=> this.toggleTodo(todo.id)}>
+            <h3 
+            className = {`todo${todo.completed ? ' completed' : ''}`}
+            key={todo.id} 
+            onClick={()=> this.toggleTodo(todo.id)}>
             {todo.todo}
             </h3>
         ))}
